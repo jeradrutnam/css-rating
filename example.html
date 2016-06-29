@@ -94,10 +94,11 @@
         $('.rating.half .icon').children().click(function(){
             var elem = $(this);
             
-            elem.closest('.icon').siblings().removeClass('active');
             elem.siblings().removeClass('active');
-            elem.closest('.icon').addClass('active');
+            elem.closest('.icon').siblings().removeClass('active');
+            elem.closest('.icon').siblings().children().removeClass('active');
             elem.addClass('active');
+            elem.closest('.icon').addClass('active');
             
             var rating = function(){
                 if(elem.index() > 0){
@@ -157,19 +158,35 @@
                     }
                     
                     if($(elem).is(':first-child')){
-                        elem.closest('.icon').removeClass('active');
+                        elem.closest('.icon').prev().siblings().removeClass('active');
+                        elem.closest('.icon').prev().siblings().children().removeClass('active');
                         elem.closest('.icon').prev().addClass('active');
                         elem.closest('.icon').prev().children(':last-child').addClass('active');
                     }
                     else{
                         elem.prev().siblings().removeClass('active');
+                        elem.closest('.icon').prev().siblings().removeClass('active');
+                        elem.closest('.icon').prev().siblings().children().removeClass('active');
                         elem.prev().addClass('active');   
+                        elem.closest('.icon').addClass('active');
                     }
                 break;
 
                 case 40: // down
                 case 37: // left
-
+                    if($(elem).is(':last-child')){
+                        elem.closest('.icon').next().siblings().removeClass('active');
+                        elem.closest('.icon').next().siblings().children().removeClass('active');
+                        elem.closest('.icon').next().addClass('active');
+                        elem.closest('.icon').next().children(':last-child').addClass('active');
+                    }
+                    else{
+                        elem.next().siblings().removeClass('active');
+                        elem.closest('.icon').next().siblings().removeClass('active');
+                        elem.closest('.icon').next().siblings().children().removeClass('active');
+                        elem.next().addClass('active');   
+                        elem.closest('.icon').addClass('active');
+                    }
                 break;
 
                 default: return;
