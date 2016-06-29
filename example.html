@@ -40,15 +40,15 @@
     <h1>CSS Rating Component v1.0.0</h1>
     <h3>by Jerad Rutnam</h3>
     
-    <div class="rating">
+    <div class="rating" tabindex="1">
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
-        <i class="icon fw fw-star active"></i>
+        <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
     </div>
 
-    <div class="rating half">
+    <div class="rating half" tabindex="2">
         <span class="icon">
             <i class="fw fw-star"></i>
             <i class="fw fw-star"></i>
@@ -67,7 +67,7 @@
         </span>
         <span class="icon active">
             <i class="fw fw-star"></i>
-            <i class="fw fw-star active"></i>
+            <i class="fw fw-star"></i>
         </span>
     </div>
 
@@ -113,6 +113,78 @@
         
         $('.rating.half .icon').children().on('clicked.rate.half', function(e, data){
             console.log(data);
+        });
+        
+        $('.rating:not(.half)').keydown(function(e) {
+            var elem = $('.icon.active', this);
+ 
+            switch(e.which) {
+                case 37: // left
+                    if($(elem).is(':last-child')){
+                        elem.siblings('.icon').removeClass('active');
+                        elem.removeClass('active');  
+                    }
+                    else {
+                        elem.next().siblings('.icon').removeClass('active');
+                        elem.next().addClass('active');    
+                    }
+                break;
+
+                case 38: // up
+                    if(elem.length == 0){
+                        $('.icon:last-child', this).addClass('active');
+                    }
+                    elem.prev().siblings('.icon').removeClass('active');
+                    elem.prev().addClass('active');
+                break;
+
+                case 39: // right
+                    if(elem.length == 0){
+                        $('.icon:last-child', this).addClass('active');
+                    }
+                    elem.prev().siblings('.icon').removeClass('active');
+                    elem.prev().addClass('active');
+                break;
+
+                case 40: // down
+                    if($(elem).is(':last-child')){
+                        elem.siblings('.icon').removeClass('active');
+                        elem.removeClass('active');  
+                    }
+                    else {
+                        elem.next().siblings('.icon').removeClass('active');
+                        elem.next().addClass('active');    
+                    }
+                break;
+
+                default: return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        });
+        
+        $('.rating.half').keydown(function(e) {
+            var elem = $('.icon.active > .active', this);
+            
+            switch(e.which) {
+                case 37: // left
+                    
+                break;
+
+                case 38: // up
+                    
+                break;
+
+                case 39: // right
+                    
+                break;
+
+                case 40: // down
+                    
+                break;
+
+                default: return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
         });
     </script>
   </body>
