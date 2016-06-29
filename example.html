@@ -30,16 +30,37 @@
             margin-top: 8px;
             margin-bottom: 50px;
         }
+        h4 {
+           text-align: center; 
+        }
         .rating {
             margin: 20px auto;
+        }
+        .bar {
+            display: inline-block;
+            height: 50px;
+            width: 20px;
+            border-right: 2px solid #fff;
+            border-left: 2px solid #fff;
+            background: #563D7C;
+        }
+        .arrow-right {
+            width: 0; 
+            height: 0; 
+            padding: 0 2px;
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+
+            border-left: 30px solid #563D7C;
         }
     </style>
   </head>
   <body tabindex="1">
       
-    <h1>CSS Rating Component v1.0.0</h1>
+    <h1>CSS Rating Component v0.0.2</h1>
     <h3>by Jerad Rutnam</h3>
     
+    <h4>CSS Font Icon (Font WSO2)</h4>
     <div class="rating" tabindex="2">
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
@@ -47,7 +68,8 @@
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
     </div>
-
+    
+    <h4>CSS Fonr Icon (Font WSO2) - Half</h4>
     <div class="rating half" tabindex="3">
         <span class="icon">
             <i class="fw fw-star"></i>
@@ -69,6 +91,28 @@
             <i class="fw fw-star"></i>
             <i class="fw fw-star"></i>
         </span>
+    </div>
+    
+    <h4>CSS Bar Block</h4>
+    <div class="rating" tabindex="3">
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+        <i class="icon bar"></i>
+    </div>
+    
+    <h4>CSS Triangle</h4>
+    <div class="rating" tabindex="3">
+        <i class="icon arrow-right"></i>
+        <i class="icon arrow-right"></i>
+        <i class="icon arrow-right"></i>
+        <i class="icon arrow-right"></i>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
