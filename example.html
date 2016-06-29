@@ -147,7 +147,8 @@
         });
         
         $('.rating.half').keydown(function(e) {
-            var elem = $('.icon.active > .active', this);
+            var elem = $('.icon.active > .active', this),
+                elemParent = elem.closest('.icon');
             
             switch(e.which) {
                 case 38: // up
@@ -157,40 +158,40 @@
                         $('.icon:last-child > :last-child', this).addClass('active');
                     }
                     
-                    if($(elem).is(':first-child')){
-                        elem.closest('.icon').prev().siblings().removeClass('active');
-                        elem.closest('.icon').prev().siblings().children().removeClass('active');
-                        elem.closest('.icon').prev().addClass('active');
-                        elem.closest('.icon').prev().children(':last-child').addClass('active');
+                    if(elem.is(':first-child')){
+                        elemParent.prev().siblings().removeClass('active');
+                        elemParent.prev().siblings().children().removeClass('active');
+                        elemParent.prev().addClass('active');
+                        elemParent.prev().children(':last-child').addClass('active');
                     }
                     else{
                         elem.prev().siblings().removeClass('active');
-                        elem.closest('.icon').prev().siblings().removeClass('active');
-                        elem.closest('.icon').prev().siblings().children().removeClass('active');
+                        elemParent.prev().siblings().removeClass('active');
+                        elemParent.prev().siblings().children().removeClass('active');
                         elem.prev().addClass('active');   
-                        elem.closest('.icon').addClass('active');
+                        elemParent.addClass('active');
                     }
                 break;
 
                 case 40: // down
                 case 37: // left
-                    if( ($(elem).closest('.icon').is(':last-child')) && ($(elem).is(':last-child')) ){
+                    if( (elemParent.is(':last-child')) && (elem.is(':last-child')) ){
                         elem.closest('.icon').removeClass('active');
                         elem.removeClass('active');
                     }
                     else {
                         if($(elem).is(':last-child')){
-                            elem.closest('.icon').next().siblings().removeClass('active');
-                            elem.closest('.icon').next().siblings().children().removeClass('active');
-                            elem.closest('.icon').next().addClass('active');
-                            elem.closest('.icon').next().children(':first-child').addClass('active');
+                            elemParent.next().siblings().removeClass('active');
+                            elemParent.next().siblings().children().removeClass('active');
+                            elemParent.next().addClass('active');
+                            elemParent.next().children(':first-child').addClass('active');
                         }
                         else{
                             elem.next().siblings().removeClass('active');
-                            elem.closest('.icon').next().siblings().removeClass('active');
-                            elem.closest('.icon').next().siblings().children().removeClass('active');
+                            elemParent.next().siblings().removeClass('active');
+                            elemParent.next().siblings().children().removeClass('active');
                             elem.next().addClass('active');   
-                            elem.closest('.icon').addClass('active');
+                            elemParent.addClass('active');
                         }
                     }
                 break;
