@@ -174,18 +174,24 @@
 
                 case 40: // down
                 case 37: // left
-                    if($(elem).is(':last-child')){
-                        elem.closest('.icon').next().siblings().removeClass('active');
-                        elem.closest('.icon').next().siblings().children().removeClass('active');
-                        elem.closest('.icon').next().addClass('active');
-                        elem.closest('.icon').next().children(':last-child').addClass('active');
+                    if( ($(elem).closest('.icon').is(':last-child')) && ($(elem).is(':last-child')) ){
+                        elem.closest('.icon').removeClass('active');
+                        elem.removeClass('active');
                     }
-                    else{
-                        elem.next().siblings().removeClass('active');
-                        elem.closest('.icon').next().siblings().removeClass('active');
-                        elem.closest('.icon').next().siblings().children().removeClass('active');
-                        elem.next().addClass('active');   
-                        elem.closest('.icon').addClass('active');
+                    else {
+                        if($(elem).is(':last-child')){
+                            elem.closest('.icon').next().siblings().removeClass('active');
+                            elem.closest('.icon').next().siblings().children().removeClass('active');
+                            elem.closest('.icon').next().addClass('active');
+                            elem.closest('.icon').next().children(':first-child').addClass('active');
+                        }
+                        else{
+                            elem.next().siblings().removeClass('active');
+                            elem.closest('.icon').next().siblings().removeClass('active');
+                            elem.closest('.icon').next().siblings().children().removeClass('active');
+                            elem.next().addClass('active');   
+                            elem.closest('.icon').addClass('active');
+                        }
                     }
                 break;
 
