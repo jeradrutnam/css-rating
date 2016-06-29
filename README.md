@@ -6,12 +6,45 @@ List View is initialised using the `list-view` option in the DataTables construc
 
 Example:
 
-```js
-$(document).ready(function(){
-    $('#myTable').DataTable({
-    	listView: true
-    });
-});
+```html
+<link href="css/rating.css" rel="stylesheet">
+```
+
+```html
+<div class="rating">
+    <i class="icon fw fw-star"></i>
+    <i class="icon fw fw-star"></i>
+    <i class="icon fw fw-star"></i>
+    <i class="icon fw fw-star"></i>
+    <i class="icon fw fw-star"></i>
+</div>
+```
+
+#### For Half Rate
+
+```html
+<div class="rating half">
+    <span class="icon">
+        <i class="fw fw-star"></i>
+        <i class="fw fw-star"></i>
+    </span>
+    <span class="icon">
+        <i class="fw fw-star"></i>
+        <i class="fw fw-star"></i>
+    </span>
+    <span class="icon">
+        <i class="fw fw-star"></i>
+        <i class="fw fw-star"></i>
+    </span>
+    <span class="icon">
+        <i class="fw fw-star"></i>
+        <i class="fw fw-star"></i>
+    </span>
+    <span class="icon">
+        <i class="fw fw-star"></i>
+        <i class="fw fw-star"></i>
+    </span>
+</div>
 ```
 ### License
 
