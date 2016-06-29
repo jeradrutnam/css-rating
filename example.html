@@ -35,12 +35,12 @@
         }
     </style>
   </head>
-  <body>
+  <body tabindex="1">
       
     <h1>CSS Rating Component v1.0.0</h1>
     <h3>by Jerad Rutnam</h3>
     
-    <div class="rating" tabindex="1">
+    <div class="rating" tabindex="2">
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
         <i class="icon fw fw-star"></i>
@@ -48,7 +48,7 @@
         <i class="icon fw fw-star"></i>
     </div>
 
-    <div class="rating half" tabindex="2">
+    <div class="rating half" tabindex="3">
         <span class="icon">
             <i class="fw fw-star"></i>
             <i class="fw fw-star"></i>
@@ -65,7 +65,7 @@
             <i class="fw fw-star"></i>
             <i class="fw fw-star"></i>
         </span>
-        <span class="icon active">
+        <span class="icon">
             <i class="fw fw-star"></i>
             <i class="fw fw-star"></i>
         </span>
@@ -151,7 +151,20 @@
             switch(e.which) {
                 case 38: // up
                 case 39: // right
-
+                    if(elem.length == 0){
+                        $('.icon:last-child', this).addClass('active');
+                        $('.icon:last-child > :last-child', this).addClass('active');
+                    }
+                    
+                    if($(elem).is(':first-child')){
+                        elem.closest('.icon').removeClass('active');
+                        elem.closest('.icon').prev().addClass('active');
+                        elem.closest('.icon').prev().children(':last-child').addClass('active');
+                    }
+                    else{
+                        elem.prev().siblings().removeClass('active');
+                        elem.prev().addClass('active');   
+                    }
                 break;
 
                 case 40: // down
