@@ -119,6 +119,16 @@
             var elem = $('.icon.active', this);
  
             switch(e.which) {
+                case 38: // up
+                case 39: // right
+                    if(elem.length == 0){
+                        $('.icon:last-child', this).addClass('active');
+                    }
+                    elem.prev().siblings('.icon').removeClass('active');
+                    elem.prev().addClass('active');
+                break;
+
+                case 40: // down
                 case 37: // left
                     if($(elem).is(':last-child')){
                         elem.siblings('.icon').removeClass('active');
@@ -130,61 +140,28 @@
                     }
                 break;
 
-                case 38: // up
-                    if(elem.length == 0){
-                        $('.icon:last-child', this).addClass('active');
-                    }
-                    elem.prev().siblings('.icon').removeClass('active');
-                    elem.prev().addClass('active');
-                break;
-
-                case 39: // right
-                    if(elem.length == 0){
-                        $('.icon:last-child', this).addClass('active');
-                    }
-                    elem.prev().siblings('.icon').removeClass('active');
-                    elem.prev().addClass('active');
-                break;
-
-                case 40: // down
-                    if($(elem).is(':last-child')){
-                        elem.siblings('.icon').removeClass('active');
-                        elem.removeClass('active');  
-                    }
-                    else {
-                        elem.next().siblings('.icon').removeClass('active');
-                        elem.next().addClass('active');    
-                    }
-                break;
-
-                default: return; // exit this handler for other keys
+                default: return;
             }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
+            e.preventDefault();
         });
         
         $('.rating.half').keydown(function(e) {
             var elem = $('.icon.active > .active', this);
             
             switch(e.which) {
-                case 37: // left
-                    
-                break;
-
                 case 38: // up
-                    
-                break;
-
                 case 39: // right
-                    
+
                 break;
 
                 case 40: // down
-                    
+                case 37: // left
+
                 break;
 
-                default: return; // exit this handler for other keys
+                default: return;
             }
-            e.preventDefault(); // prevent the default action (scroll / move caret)
+            e.preventDefault();
         });
     </script>
   </body>
